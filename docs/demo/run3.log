@@ -1,0 +1,55 @@
+### run3 — 2026-11-24 14:02:21
+$ tg-mcp-cli sync --chat-ids <3 chats> --include-today
+INFO:httpx2:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+{
+  "chats": [
+    {
+      "chat_id": 100000003,
+      "title": "DM-1",
+      "new_messages": 3,
+      "summaries_written": 1,
+      "noise_days": 0,
+      "unchanged_days": 0,
+      "exported": 1,
+      "export_errors": 0,
+      "summary_errors": 0
+    },
+    {
+      "chat_id": -100000001,
+      "title": "Group-1",
+      "new_messages": 0,
+      "summaries_written": 0,
+      "noise_days": 0,
+      "unchanged_days": 0,
+      "exported": 0,
+      "export_errors": 0,
+      "summary_errors": 0
+    },
+    {
+      "chat_id": -100000002,
+      "title": "Group-2",
+      "new_messages": 0,
+      "summaries_written": 0,
+      "noise_days": 0,
+      "unchanged_days": 0,
+      "exported": 0,
+      "export_errors": 0,
+      "summary_errors": 0
+    }
+  ],
+  "new_messages": 3,
+  "summaries_written": 1,
+  "exported": 1,
+  "errors": [],
+  "status": "ok"
+}
+messages_total = 47
+--- LLM-викликів у цьому прогоні: 1
+--- перевірка дублів (total має дорівнювати distinct) ---
+messages: total=47 distinct=47 -> OK, дублів немає
+  Group-1 (-100000001): cursor=22806 stored=23
+  Group-2 (-100000002): cursor=1827437 stored=5
+  DM-1 (100000003): cursor=1828560 stored=19
+summaries[noise] = 6
+summaries[ok] = 2
+summaries exported to vault = 2

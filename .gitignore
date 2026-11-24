@@ -1,0 +1,17 @@
+# секрети та локальний стан — НІКОЛИ не комітити
+.env
+.env.*
+!.env.example
+data/
+*.session
+*.session-journal
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+
+# Python / оточення
+__pycache__/
+*.egg-info/
+.venv/
+.DS_Store

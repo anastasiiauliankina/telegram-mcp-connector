@@ -1,0 +1,17 @@
+[project]
+name = "tg-mcp"
+version = "0.1.0"
+description = "Telegram -> second brain: MCP server with incremental sync and LLM daily summaries"
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.2.0,<2", "telethon>=1.36", "anthropic>=0.40", "tzdata", "python-dotenv>=1.0"]
+
+[project.scripts]
+tg-mcp = "tg_mcp.server:main"
+tg-mcp-cli = "tg_mcp.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

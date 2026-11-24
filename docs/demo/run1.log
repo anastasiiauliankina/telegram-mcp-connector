@@ -1,0 +1,57 @@
+### run1 — 2026-11-24 13:59:47
+$ tg-mcp-cli sync --chat-ids <3 chats> 
+INFO:httpx2:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+{
+  "chats": [
+    {
+      "chat_id": 100000003,
+      "title": "DM-1",
+      "new_messages": 16,
+      "summaries_written": 0,
+      "noise_days": 1,
+      "unchanged_days": 0,
+      "exported": 0,
+      "export_errors": 0,
+      "summary_errors": 0
+    },
+    {
+      "chat_id": -100000001,
+      "title": "Group-1",
+      "new_messages": 23,
+      "summaries_written": 0,
+      "noise_days": 4,
+      "unchanged_days": 0,
+      "exported": 0,
+      "export_errors": 0,
+      "summary_errors": 0
+    },
+    {
+      "chat_id": -100000002,
+      "title": "Group-2",
+      "new_messages": 5,
+      "summaries_written": 1,
+      "noise_days": 1,
+      "unchanged_days": 0,
+      "exported": 1,
+      "export_errors": 0,
+      "summary_errors": 0
+    }
+  ],
+  "new_messages": 44,
+  "summaries_written": 1,
+  "exported": 1,
+  "errors": [],
+  "status": "ok"
+}
+messages_total = 44
+--- LLM-викликів у цьому прогоні: 3
+--- перевірка дублів (total має дорівнювати distinct) ---
+messages: total=44 distinct=44 -> OK, дублів немає
+  Group-1 (-100000001): cursor=22806 stored=23
+  Group-2 (-100000002): cursor=1827437 stored=5
+  DM-1 (100000003): cursor=1828484 stored=16
+summaries[noise] = 6
+summaries[ok] = 1
+summaries exported to vault = 1

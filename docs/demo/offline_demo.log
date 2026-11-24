@@ -1,0 +1,29 @@
+SIMULATED RUN: фейковий Telegram + фейковий LLM, реальний код sync/db/export
+
+### run1 — перший прогін (2 чати, 3 дні)
+{"status": "ok", "reason": null, "new_messages": 62, "summaries_written": 3, "exported": 3}
+messages total=62 distinct=62 | cursors={1: 12, 2: 50} | llm_calls_total=3
+
+### run2 — повторний прогін (очікуємо 0 нових, 0 нових самарі)
+{"status": "ok", "reason": null, "new_messages": 0, "summaries_written": 0, "exported": 0}
+messages total=62 distinct=62 | cursors={1: 12, 2: 50} | llm_calls_total=3
+
+### run3 — у чаті з'явилось рівно 7 нових повідомлень
+{"status": "ok", "reason": null, "new_messages": 7, "summaries_written": 1, "exported": 1}
+messages total=69 distinct=69 | cursors={1: 12, 2: 57} | llm_calls_total=4
+
+### run4 — мережа впала посеред читання (partial)
+{"status": "partial", "reason": null, "new_messages": 6, "summaries_written": 0, "exported": 0}
+messages total=75 distinct=75 | cursors={1: 18, 2: 57} | llm_calls_total=4
+
+### run5 — відновлення: дочитує без пропусків і дублів
+{"status": "ok", "reason": null, "new_messages": 9, "summaries_written": 1, "exported": 1}
+messages total=84 distinct=84 | cursors={1: 27, 2: 57} | llm_calls_total=5
+
+### run6 — ще один повторний прогін (0 нових)
+{"status": "ok", "reason": null, "new_messages": 0, "summaries_written": 0, "exported": 0}
+messages total=84 distinct=84 | cursors={1: 27, 2: 57} | llm_calls_total=5
+
+### run7 — два запуски одночасно (cron + MCP)
+statuses: ['ok', 'skipped'] (одночасний запуск пропущено, а не виконано вдруге)
+перевірка безперервності msg_id за день у чаті 2: True
